@@ -1,0 +1,80 @@
+QC columns detected: []
+Chunk 1: 50000 rows, NaNs: temp=0 (0.0%), pres=0 (0.0%), psal=6809 (13.6%), Unique (platform, time): 57
+Chunk 1: Dropped 0, Valid 50000
+Chunk 1: 57 profiles, Empty temp: 0, pres: 0, psal: 8
+Chunk 2: 50000 rows, NaNs: temp=0 (0.0%), pres=0 (0.0%), psal=0 (0.0%), Unique (platform, time): 53
+Chunk 2: Dropped 0, Valid 50000
+Chunk 2: 53 profiles, Empty temp: 0, pres: 0, psal: 0
+Chunk 3: 50000 rows, NaNs: temp=39212 (78.4%), pres=39212 (78.4%), psal=39212 (78.4%), Unique (platform, time): 64
+Chunk 3: Dropped 0, Valid 50000
+Chunk 3: 64 profiles, Empty temp: 53, pres: 53, psal: 53
+Chunk 4: 50000 rows, NaNs: temp=6134 (12.3%), pres=6134 (12.3%), psal=6134 (12.3%), Unique (platform, time): 87
+Chunk 4: Dropped 0, Valid 50000
+Chunk 4: 87 profiles, Empty temp: 10, pres: 10, psal: 10
+Chunk 5: 50000 rows, NaNs: temp=38997 (78.0%), pres=38997 (78.0%), psal=38997 (78.0%), Unique (platform, time): 53
+Chunk 5: Dropped 0, Valid 50000
+Chunk 5: 53 profiles, Empty temp: 42, pres: 42, psal: 42
+Chunk 6: 50000 rows, NaNs: temp=47662 (95.3%), pres=47662 (95.3%), psal=47662 (95.3%), Unique (platform, time): 53
+Chunk 6: Dropped 0, Valid 50000
+Chunk 6: 53 profiles, Empty temp: 50, pres: 50, psal: 50
+Chunk 7: 50000 rows, NaNs: temp=33611 (67.2%), pres=33613 (67.2%), psal=50000 (100.0%), Unique (platform, time): 55
+Chunk 7: Dropped 0, Valid 50000
+Chunk 7: 55 profiles, Empty temp: 37, pres: 37, psal: 55
+Chunk 8: 50000 rows, NaNs: temp=33451 (66.9%), pres=33446 (66.9%), psal=33451 (66.9%), Unique (platform, time): 47
+Chunk 8: Dropped 0, Valid 50000
+Chunk 8: 47 profiles, Empty temp: 34, pres: 34, psal: 34
+Chunk 9: 50000 rows, NaNs: temp=37765 (75.5%), pres=37758 (75.5%), psal=37765 (75.5%), Unique (platform, time): 67
+Chunk 9: Dropped 0, Valid 50000
+Chunk 9: 67 profiles, Empty temp: 43, pres: 43, psal: 43
+Chunk 10: 50000 rows, NaNs: temp=13067 (26.1%), pres=13067 (26.1%), psal=13349 (26.7%), Unique (platform, time): 101
+Chunk 10: Dropped 0, Valid 50000
+Chunk 10: 101 profiles, Empty temp: 14, pres: 14, psal: 18
+Chunk 11: 50000 rows, NaNs: temp=36818 (73.6%), pres=36809 (73.6%), psal=36928 (73.9%), Unique (platform, time): 85
+Chunk 11: Dropped 0, Valid 50000
+Chunk 11: 85 profiles, Empty temp: 60, pres: 60, psal: 60
+Chunk 12: 50000 rows, NaNs: temp=50000 (100.0%), pres=50000 (100.0%), psal=50000 (100.0%), Unique (platform, time): 92
+Chunk 12: Dropped 0, Valid 50000
+Chunk 12: 92 profiles, Empty temp: 92, pres: 92, psal: 92
+Chunk 13: 50000 rows, NaNs: temp=50000 (100.0%), pres=50000 (100.0%), psal=50000 (100.0%), Unique (platform, time): 94
+Chunk 13: Dropped 0, Valid 50000
+Chunk 13: 94 profiles, Empty temp: 94, pres: 94, psal: 94
+Chunk 14: 50000 rows, NaNs: temp=33134 (66.3%), pres=33132 (66.3%), psal=33134 (66.3%), Unique (platform, time): 113
+Chunk 14: Dropped 0, Valid 50000
+Chunk 14: 113 profiles, Empty temp: 78, pres: 78, psal: 78
+Chunk 15: 50000 rows, NaNs: temp=29784 (59.6%), pres=29781 (59.6%), psal=29784 (59.6%), Unique (platform, time): 71
+Chunk 15: Dropped 0, Valid 50000
+Chunk 15: 71 profiles, Empty temp: 31, pres: 31, psal: 31
+Chunk 16: 50000 rows, NaNs: temp=12706 (25.4%), pres=12706 (25.4%), psal=12706 (25.4%), Unique (platform, time): 50
+Chunk 16: Dropped 0, Valid 50000
+Chunk 16: 50 profiles, Empty temp: 13, pres: 13, psal: 13
+Chunk 17: 50000 rows, NaNs: temp=0 (0.0%), pres=0 (0.0%), psal=0 (0.0%), Unique (platform, time): 51
+Chunk 17: Dropped 0, Valid 50000
+Chunk 17: 51 profiles, Empty temp: 0, pres: 0, psal: 0
+Chunk 18: 50000 rows, NaNs: temp=0 (0.0%), pres=0 (0.0%), psal=0 (0.0%), Unique (platform, time): 51
+Chunk 18: Dropped 0, Valid 50000
+Chunk 18: 51 profiles, Empty temp: 0, pres: 0, psal: 0
+Chunk 19: 50000 rows, NaNs: temp=19528 (39.1%), pres=19528 (39.1%), psal=19548 (39.1%), Unique (platform, time): 171
+Chunk 19: Dropped 0, Valid 50000
+Chunk 19: 171 profiles, Empty temp: 45, pres: 45, psal: 45
+Chunk 20: 50000 rows, NaNs: temp=9040 (18.1%), pres=9034 (18.1%), psal=9057 (18.1%), Unique (platform, time): 313
+Chunk 20: Dropped 0, Valid 50000
+Chunk 20: 313 profiles, Empty temp: 90, pres: 90, psal: 90
+Chunk 21: 50000 rows, NaNs: temp=4661 (9.3%), pres=4653 (9.3%), psal=4661 (9.3%), Unique (platform, time): 135
+Chunk 21: Dropped 0, Valid 50000
+Chunk 21: 135 profiles, Empty temp: 37, pres: 37, psal: 37
+Chunk 22: 50000 rows, NaNs: temp=28667 (57.3%), pres=28667 (57.3%), psal=28667 (57.3%), Unique (platform, time): 503
+Chunk 22: Dropped 0, Valid 50000
+Chunk 22: 503 profiles, Empty temp: 286, pres: 286, psal: 286
+Chunk 23: 50000 rows, NaNs: temp=16658 (33.3%), pres=16644 (33.3%), psal=16703 (33.4%), Unique (platform, time): 304
+Chunk 23: Dropped 0, Valid 50000
+Chunk 23: 304 profiles, Empty temp: 166, pres: 166, psal: 166
+Chunk 24: 50000 rows, NaNs: temp=6708 (13.4%), pres=6708 (13.4%), psal=6708 (13.4%), Unique (platform, time): 125
+Chunk 24: Dropped 0, Valid 50000
+Chunk 24: 125 profiles, Empty temp: 68, pres: 68, psal: 68
+Chunk 25: 6339 rows, NaNs: temp=6339 (100.0%), pres=6339 (100.0%), psal=6339 (100.0%), Unique (platform, time): 61
+Chunk 25: Dropped 0, Valid 6339
+Chunk 25: 61 profiles, Empty temp: 61, pres: 61, psal: 61
+Final: 2856 profiles from 1206339 rows (Total unique pairs: 2856)
+After filtering: 2856 profiles
+Sample profile: {'float_id': 1902194, 'profile_date': '2025-01-09T19:43:57Z', 'latitude': 1.7275, 'longitude': 64.836}
+DB count: 2856 profiles

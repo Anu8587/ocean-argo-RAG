@@ -1,0 +1,11 @@
+This database contains ARGO float data in a table named 'argo_profiles'.
+Each row represents a unique measurement profile from a specific float at a specific time.
+
+The table has the following columns:
+- float_id: The unique identifier for each ARGO float.
+- profile_date: The timestamp (UTC) when the profile was taken. Format is YYYY-MM-DD HH:MM:SS.
+- latitude: The latitude of the float in degrees north.
+- longitude: The longitude of the float in degrees east.
+- pressure_levels: A JSON array of pressure levels (depths) in decibars.
+- temperature_values: A JSON array of temperature readings in Celsius, corresponding to the pressure_levels.
+- salinity_values: A JSON array of salinity readings (PSU), corresponding to the pressure_levels.
