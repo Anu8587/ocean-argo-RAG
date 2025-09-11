@@ -1,0 +1,76 @@
+2025-09-11 21:56:07,720 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-11 21:56:07,898 - INFO - Use pytorch device_name: cpu
+2025-09-11 21:56:07,898 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-11 21:56:12,671 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.2:5000
+2025-09-11 21:56:12,671 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-11 21:56:12,682 - INFO -  * Restarting with stat
+2025-09-11 21:56:21,573 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-11 21:56:21,669 - INFO - Use pytorch device_name: cpu
+2025-09-11 21:56:21,669 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-11 21:56:27,718 - WARNING -  * Debugger is active!
+2025-09-11 21:56:27,727 - INFO -  * Debugger PIN: 129-881-227
+2025-09-11 21:56:28,800 - INFO - 127.0.0.1 - - [11/Sep/2025 21:56:28] "GET /stats HTTP/1.1" 200 -
+2025-09-11 21:56:38,266 - INFO - 127.0.0.1 - - [11/Sep/2025 21:56:38] "GET /stats HTTP/1.1" 200 -
+2025-09-11 21:57:40,048 - INFO - 127.0.0.1 - - [11/Sep/2025 21:57:40] "GET /stats HTTP/1.1" 200 -
+2025-09-11 21:57:44,948 - INFO - 127.0.0.1 - - [11/Sep/2025 21:57:44] "GET /stats HTTP/1.1" 200 -
+2025-09-11 22:00:53,446 - INFO - 127.0.0.1 - - [11/Sep/2025 22:00:53] "GET /stats HTTP/1.1" 200 -
+2025-09-11 22:00:58,192 - INFO - 127.0.0.1 - - [11/Sep/2025 22:00:58] "GET /stats HTTP/1.1" 200 -
+2025-09-11 22:03:03,993 - INFO - 127.0.0.1 - - [11/Sep/2025 22:03:03] "GET /stats HTTP/1.1" 200 -
+2025-09-11 22:03:08,809 - INFO - 127.0.0.1 - - [11/Sep/2025 22:03:08] "GET /stats HTTP/1.1" 200 -
+2025-09-11 22:04:33,173 - INFO - 127.0.0.1 - - [11/Sep/2025 22:04:33] "GET /stats HTTP/1.1" 200 -
+2025-09-11 22:04:38,289 - INFO - 127.0.0.1 - - [11/Sep/2025 22:04:38] "GET /stats HTTP/1.1" 200 -
+2025-09-11 22:06:16,576 - INFO - 127.0.0.1 - - [11/Sep/2025 22:06:16] "GET /stats HTTP/1.1" 200 -
+2025-09-11 22:06:20,855 - INFO - 127.0.0.1 - - [11/Sep/2025 22:06:20] "GET /stats HTTP/1.1" 200 -
+2025-09-11 22:06:56,920 - INFO - 127.0.0.1 - - [11/Sep/2025 22:06:56] "GET /stats HTTP/1.1" 200 -
+2025-09-11 22:07:02,090 - INFO - 127.0.0.1 - - [11/Sep/2025 22:07:02] "GET /stats HTTP/1.1" 200 -
+2025-09-11 22:08:37,185 - INFO - 127.0.0.1 - - [11/Sep/2025 22:08:37] "GET /stats HTTP/1.1" 200 -
+2025-09-11 22:08:56,454 - INFO - 127.0.0.1 - - [11/Sep/2025 22:08:56] "GET /stats HTTP/1.1" 200 -
+2025-09-11 22:09:01,018 - INFO - 127.0.0.1 - - [11/Sep/2025 22:09:01] "GET /stats HTTP/1.1" 200 -
+2025-09-11 22:14:08,079 - INFO - 127.0.0.1 - - [11/Sep/2025 22:14:08] "GET /stats HTTP/1.1" 200 -
+2025-09-11 22:14:30,744 - INFO - 127.0.0.1 - - [11/Sep/2025 22:14:30] "GET /stats HTTP/1.1" 200 -
+2025-09-11 22:14:45,469 - INFO - Processing query: Show profiles in the Indian Ocean
+2025-09-11 22:14:46,360 - INFO - Chroma returned float_ids: [1902194, 1902194, 1902455, 1902198, 3902581, 2902766, 1902455, 1902198, 1902455, 2902765, 2903140, 2902768, 2903142, 2902765, 2902766, 2902764, 1902681, 2902203, 2902768, 2902766, 2902766, 1902289, 3902581, 2902766, 1902198, 2902766, 1902198, 1902455, 1902458, 1902482, 2902772, 2902766, 1902458, 1902482, 1902458, 1902198, 1902457, 1902198, 2902766, 2902768, 1902455, 1902455, 2902769, 2903956, 2902768, 2903138, 1902457, 1902455, 1902482, 1902669]
+2025-09-11 22:14:47,110 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 22:14:47,160 - INFO - Executing SQL: SELECT * FROM argo_profiles WHERE latitude BETWEEN :lat_min AND :lat_max AND longitude BETWEEN :lon_min AND :lon_max; with params: {'ids': [1902194, 1902194, 1902455, 1902198, 3902581, 2902766, 1902455, 1902198, 1902455, 2902765, 2903140, 2902768, 2903142, 2902765, 2902766, 2902764, 1902681, 2902203, 2902768, 2902766, 2902766, 1902289, 3902581, 2902766, 1902198, 2902766, 1902198, 1902455, 1902458, 1902482, 2902772, 2902766, 1902458, 1902482, 1902458, 1902198, 1902457, 1902198, 2902766, 2902768, 1902455, 1902455, 2902769, 2903956, 2902768, 2903138, 1902457, 1902455, 1902482, 1902669], 'lat_min': -30, 'lat_max': 30, 'lon_min': 20, 'lon_max': 120}
+2025-09-11 22:14:48,083 - INFO - Query returned 2856 profiles for: Show profiles in the Indian Ocean
+2025-09-11 22:14:48,126 - INFO - 127.0.0.1 - - [11/Sep/2025 22:14:48] "POST /ask HTTP/1.1" 200 -
+2025-09-11 22:15:24,925 - INFO - Processing query: Find temperature data in January 2025
+2025-09-11 22:15:25,051 - INFO - Chroma returned float_ids: [1902625, 1902670, 1902367, 1902367, 1902670, 1902367, 1902367, 1902625, 1902626, 1902625, 1902625, 1902672, 1902670, 1902670, 1902757, 1902670, 1902672, 1902671, 1902626, 1902751, 1902625, 1902671, 1902625, 1902625, 1902626, 1902625, 1902194, 1902625, 1902625, 1902372, 1902669, 1902625, 1902625, 1902670, 1902751, 1902670, 1902660, 1902194, 1902626, 1902625, 1902457, 1902672, 1902751, 1902457, 1902757, 1902367, 1902367, 1902625, 1902751, 1902372]
+2025-09-11 22:15:25,569 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 22:15:25,571 - INFO - Executing SQL: SELECT * FROM argo_profiles WHERE profile_date LIKE '2025-01-%'; with params: {'ids': [1902625, 1902670, 1902367, 1902367, 1902670, 1902367, 1902367, 1902625, 1902626, 1902625, 1902625, 1902672, 1902670, 1902670, 1902757, 1902670, 1902672, 1902671, 1902626, 1902751, 1902625, 1902671, 1902625, 1902625, 1902626, 1902625, 1902194, 1902625, 1902625, 1902372, 1902669, 1902625, 1902625, 1902670, 1902751, 1902670, 1902660, 1902194, 1902626, 1902625, 1902457, 1902672, 1902751, 1902457, 1902757, 1902367, 1902367, 1902625, 1902751, 1902372], 'month': '01', 'year': '2025'}
+2025-09-11 22:15:25,700 - INFO - Query returned 290 profiles for: Find temperature data in January 2025
+2025-09-11 22:15:25,708 - INFO - 127.0.0.1 - - [11/Sep/2025 22:15:25] "POST /ask HTTP/1.1" 200 -
+2025-09-11 22:16:49,300 - INFO - Processing query: List floats with salinity data
+2025-09-11 22:16:49,463 - INFO - Chroma returned float_ids: [7902200, 7902170, 7901127, 7902190, 7902190, 7901125, 7902200, 7901130, 7901126, 7901125, 5907107, 7902200, 7902242, 4903864, 7902200, 7902200, 7901126, 7902242, 7902242, 7902170, 7902200, 4903864, 7902170, 7902190, 7902200, 7901127, 7902170, 7902200, 4903775, 7902200, 4903864, 7902200, 7902242, 7901126, 7901127, 4903864, 7902200, 7901126, 7902190, 7902190, 7901125, 7902200, 7901125, 7902200, 7901125, 4903864, 7901126, 7901127, 4903864, 7901125]
+2025-09-11 22:16:50,255 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 22:16:50,260 - INFO - Using fallback SQL query
+2025-09-11 22:16:50,263 - INFO - Executing SQL: 
+            SELECT float_id, profile_date, latitude, longitude, 
+                   temperature_values, pressure_levels, salinity_values
+            FROM argo_profiles
+            WHERE float_id = ANY(:ids)
+            AND json_array_length(temperature_values::json) > 0
+             AND json_array_length(salinity_values::json) > 0 with params: {'ids': [7902200, 7902170, 7901127, 7902190, 7902190, 7901125, 7902200, 7901130, 7901126, 7901125, 5907107, 7902200, 7902242, 4903864, 7902200, 7902200, 7901126, 7902242, 7902242, 7902170, 7902200, 4903864, 7902170, 7902190, 7902200, 7901127, 7902170, 7902200, 4903775, 7902200, 4903864, 7902200, 7902242, 7901126, 7901127, 4903864, 7902200, 7901126, 7902190, 7902190, 7901125, 7902200, 7901125, 7902200, 7901125, 4903864, 7901126, 7901127, 4903864, 7901125], 'warning': 'Salinity data is sparse (~50% of profiles lack salinity measurements).'}
+2025-09-11 22:16:50,487 - INFO - Query returned 175 profiles for: List floats with salinity data
+2025-09-11 22:16:50,487 - INFO - 127.0.0.1 - - [11/Sep/2025 22:16:50] "POST /ask HTTP/1.1" 200 -
+2025-09-11 22:17:12,151 - INFO - 127.0.0.1 - - [11/Sep/2025 22:17:12] "GET /stats HTTP/1.1" 200 -
+2025-09-11 22:18:33,423 - INFO - 127.0.0.1 - - [11/Sep/2025 22:18:33] "GET /stats HTTP/1.1" 200 -
+2025-09-11 22:22:48,202 - INFO - 127.0.0.1 - - [11/Sep/2025 22:22:48] "GET /stats HTTP/1.1" 200 -
+2025-09-11 22:40:34,913 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-11 22:40:35,189 - INFO - Use pytorch device_name: cpu
+2025-09-11 22:40:35,189 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-11 22:40:41,419 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.2:5000
+2025-09-11 22:40:41,419 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-11 22:40:41,419 - INFO -  * Restarting with stat
+2025-09-11 22:40:53,235 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-11 22:40:53,371 - INFO - Use pytorch device_name: cpu
+2025-09-11 22:40:53,371 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-11 22:40:58,571 - WARNING -  * Debugger is active!
+2025-09-11 22:40:58,577 - INFO -  * Debugger PIN: 129-881-227
+2025-09-11 22:53:56,341 - INFO -  * Detected change in 'C:\\Users\\anush\\Downloads\\floatchat\\backend\\chatbot.py', reloading
