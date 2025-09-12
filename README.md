@@ -87,24 +87,6 @@ It will open at `http://localhost:3000`, which connects to the Flask backend at 
 
 ---
 
-## 📂 Project Structure
-floatchat/
-├── backend/
-│ ├── chatbot.py # Flask API + Groq LLM integration
-│ ├── setup_chroma.py # Populate ChromaDB with embeddings
-│ ├── context.py # Database schema + config
-│ ├── load_data.py # CSV → PostgreSQL ingestion
-│ ├── db_context.txt # Schema description (auto-generated)
-│ └── ...
-├── frontend/
-│ ├── src/
-│ │ ├── App.js # Chat UI
-│ │ └── ...
-│ ├── package.json
-│ └── ...
-├── requirements.txt
-└── README.md
-
 
 ---
 
