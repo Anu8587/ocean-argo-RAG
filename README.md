@@ -70,41 +70,10 @@ By default, it runs at `http://127.0.0.1:5000`.
 You can test with:  
 `curl -X POST http://127.0.0.1:5000/chat -H "Content-Type: application/json" -d '{"message": "Show me temperature profiles near 10N 70E"}'`
 
----
-
-## 🎨 Frontend Setup
-
-Navigate to the frontend folder:  
-`cd frontend`
-
-Install dependencies:  
-`npm install`
-
-Start the dev server:  
-`npm start`
-
-It will open at `http://localhost:3000`, which connects to the Flask backend at `http://127.0.0.1:5000`.
-
----
-
 
 ---
 
 ## ⚙️ Requirements
-
-Full `requirements.txt`:
-flask
-sqlalchemy
-psycopg2-binary
-pandas
-numpy
-chromadb
-sentence-transformers
-torch
-transformers
-groq
-python-dotenv
-
 
 Install with:  
 `pip install -r requirements.txt`
@@ -116,8 +85,6 @@ Install with:
 1. Prepare DB → `python backend/load_data.py`  
 2. Index with Chroma → `python backend/setup_chroma.py`  
 3. Run Chatbot API → `python backend/chatbot.py`  
-4. Start Frontend → `cd frontend && npm start`  
-5. Open UI → Go to `http://localhost:3000` and start chatting!  
 
 ---
 
