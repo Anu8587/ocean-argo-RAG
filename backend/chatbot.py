@@ -1,12 +1,4 @@
-# --- Debug endpoint for troubleshooting ---
-@app.route('/debug', methods=['POST'])
-def debug():
-    data = request.get_json()
-    user_query = data.get('query', 'test query')
-    results = query_profiles(user_query)
-    
-    # Return detailed debugging info
-    return jsonifyfrom flask import Flask, request, jsonify
+from flask import Flask, request, jsonify
 import chromadb
 from sentence_transformers import SentenceTransformer
 import pandas as pd
