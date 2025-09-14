@@ -1,0 +1,101 @@
+2025-09-14 21:39:10,202 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-14 21:39:11,744 - INFO - Use pytorch device_name: cpu
+2025-09-14 21:39:11,744 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-14 21:39:18,689 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-09-14 21:39:18,689 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-14 21:39:18,738 - INFO -  * Restarting with watchdog (windowsapi)
+2025-09-14 21:39:39,764 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-14 21:39:39,934 - INFO - Use pytorch device_name: cpu
+2025-09-14 21:39:39,934 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-14 21:39:46,185 - WARNING -  * Debugger is active!
+2025-09-14 21:39:46,191 - INFO -  * Debugger PIN: 129-881-227
+2025-09-14 21:40:10,707 - INFO - 127.0.0.1 - - [14/Sep/2025 21:40:10] "GET /stats HTTP/1.1" 200 -
+2025-09-14 21:40:12,792 - INFO - Processing query: Show profiles in All from 2025-01-01 to 2025-08-31 with Temperature, Salinity
+2025-09-14 21:40:13,358 - INFO - Chroma returned float_ids: [4903864, 2902203, 2903142, 2903142, 1902455, 4903775, 1902455, 7902200, 7902200, 2902272, 1901897, 4903864, 1902455, 4903794, 1902455, 6903059, 6903140, 6903140, 2902273, 2902203, 4903775, 2903142, 7902200, 1902669, 2903142, 1902457, 4903864, 2902306, 4903864, 1902458, 2902768, 1902457, 4903776, 6903140, 1902458, 6903140, 1902458, 4903775, 4903864, 7902190, 4903775, 4903775, 4903793, 1902458, 6903140, 2902203, 1901897, 1902458, 1902455, 2903142]
+2025-09-14 21:40:17,001 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 21:40:17,041 - INFO - Executing SQL: SELECT * FROM argo_profiles WHERE profile_date >= :start_date AND profile_date <= :end_date AND json_array_length(temperature_values::json) > 0 AND json_array_length(salinity_values::json) > 0; with params: {'ids': [4903864, 2902203, 2903142, 2903142, 1902455, 4903775, 1902455, 7902200, 7902200, 2902272, 1901897, 4903864, 1902455, 4903794, 1902455, 6903059, 6903140, 6903140, 2902273, 2902203, 4903775, 2903142, 7902200, 1902669, 2903142, 1902457, 4903864, 2902306, 4903864, 1902458, 2902768, 1902457, 4903776, 6903140, 1902458, 6903140, 1902458, 4903775, 4903864, 7902190, 4903775, 4903775, 4903793, 1902458, 6903140, 2902203, 1901897, 1902458, 1902455, 2903142], 'start_date': '2025-01-01 00:00:00', 'end_date': '2025-08-31 23:59:59'}
+2025-09-14 21:40:17,987 - INFO - Query returned 1413 profiles for: Show profiles in All from 2025-01-01 to 2025-08-31 with Temperature, Salinity
+2025-09-14 21:40:18,021 - INFO - 127.0.0.1 - - [14/Sep/2025 21:40:18] "POST /ask HTTP/1.1" 200 -
+2025-09-14 21:40:37,318 - INFO - 127.0.0.1 - - [14/Sep/2025 21:40:37] "GET /stats HTTP/1.1" 200 -
+2025-09-14 21:40:39,411 - INFO - Processing query: Show profiles in All from 2025-01-01 to 2025-08-31 with Temperature
+2025-09-14 21:40:39,571 - INFO - Chroma returned float_ids: [2902206, 2903956, 2903956, 2903954, 2903956, 2903954, 1902751, 1902669, 2903140, 1902751, 1902734, 2903140, 2903954, 2903954, 1902625, 2903956, 2903956, 2903956, 1902734, 2902201, 1902734, 2903956, 1902734, 2903954, 1902751, 2903140, 2903955, 1902367, 2903955, 1902755, 1902367, 1902672, 2903956, 2903956, 2903956, 1902751, 2902201, 2903434, 2903956, 2903956, 1902751, 3902490, 1902757, 1902669, 1902734, 1902367, 2903956, 1902755, 1902660, 2902206]
+2025-09-14 21:40:40,297 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 21:40:40,309 - INFO - Executing SQL: SELECT * FROM argo_profiles WHERE profile_date BETWEEN :start_date AND :end_date AND json_array_length(temperature_values::json) > 0; with params: {'ids': [2902206, 2903956, 2903956, 2903954, 2903956, 2903954, 1902751, 1902669, 2903140, 1902751, 1902734, 2903140, 2903954, 2903954, 1902625, 2903956, 2903956, 2903956, 1902734, 2902201, 1902734, 2903956, 1902734, 2903954, 1902751, 2903140, 2903955, 1902367, 2903955, 1902755, 1902367, 1902672, 2903956, 2903956, 2903956, 1902751, 2902201, 2903434, 2903956, 2903956, 1902751, 3902490, 1902757, 1902669, 1902734, 1902367, 2903956, 1902755, 1902660, 2902206], 'start_date': '2025-01-01 00:00:00', 'end_date': '2025-08-31 23:59:59'}
+2025-09-14 21:40:40,399 - INFO - 127.0.0.1 - - [14/Sep/2025 21:40:40] "GET /stats HTTP/1.1" 200 -
+2025-09-14 21:40:41,613 - INFO - Query returned 1443 profiles for: Show profiles in All from 2025-01-01 to 2025-08-31 with Temperature
+2025-09-14 21:40:41,708 - INFO - 127.0.0.1 - - [14/Sep/2025 21:40:41] "POST /ask HTTP/1.1" 200 -
+2025-09-14 21:40:42,495 - INFO - Processing query: Show profiles in All from 2025-01-01 to 2025-08-31 with Temperature, Pressure
+2025-09-14 21:40:42,606 - INFO - Chroma returned float_ids: [2903142, 2903142, 1902458, 2903142, 1902669, 1902457, 5907083, 5907083, 2902770, 1901910, 4903777, 1902455, 2903895, 1902457, 1902681, 2903892, 2903142, 1902455, 2903893, 2902388, 1902455, 1902457, 2903466, 2902768, 1901910, 2902203, 4903776, 4903794, 2903142, 2902203, 2902273, 1902669, 1901897, 6903141, 2903895, 2902203, 2902273, 2902203, 1902457, 1902669, 2902306, 1902455, 1902669, 2902203, 1902670, 1902671, 2902203, 1902455, 2902770, 2902769]
+2025-09-14 21:40:43,118 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 21:40:43,118 - INFO - Executing SQL: SELECT float_id, profile_date, latitude, longitude, temperature_values, pressure_levels FROM argo_profiles WHERE profile_date >= :start_date AND profile_date <= :end_date AND json_array_length(temperature_values::json) > 0 AND json_array_length(pressure_levels::json) > 0; with params: {'ids': [2903142, 2903142, 1902458, 2903142, 1902669, 1902457, 5907083, 5907083, 2902770, 1901910, 4903777, 1902455, 2903895, 1902457, 1902681, 2903892, 2903142, 1902455, 2903893, 2902388, 1902455, 1902457, 2903466, 2902768, 1901910, 2902203, 4903776, 4903794, 2903142, 2902203, 2902273, 1902669, 1901897, 6903141, 2903895, 2902203, 2902273, 2902203, 1902457, 1902669, 2902306, 1902455, 1902669, 2902203, 1902670, 1902671, 2902203, 1902455, 2902770, 2902769], 'start_date': '2025-01-01', 'end_date': '2025-08-31'}
+2025-09-14 21:40:43,626 - ERROR - Query error: 'salinity_values'
+2025-09-14 21:40:43,674 - INFO - 127.0.0.1 - - [14/Sep/2025 21:40:43] "[35m[1mPOST /ask HTTP/1.1[0m" 500 -
+2025-09-14 21:40:51,578 - INFO - 127.0.0.1 - - [14/Sep/2025 21:40:51] "GET /stats HTTP/1.1" 200 -
+2025-09-14 21:40:53,685 - INFO - Processing query: Show profiles in Arabian Sea from 2025-01-01 to 2025-08-31 with Temperature, Pressure
+2025-09-14 21:40:53,809 - INFO - Chroma returned float_ids: [1902457, 2903142, 2903466, 4903793, 4903777, 2903142, 4903775, 1902457, 1902457, 2902306, 2903464, 2903893, 4903777, 1902669, 4903776, 2903466, 1902669, 1902455, 4903776, 4903775, 1902458, 1902681, 1902457, 4903776, 2903466, 1902455, 2903142, 1902455, 7902200, 1902194, 4903777, 2903142, 4903775, 2903895, 4903793, 6990612, 2903435, 2903435, 7901125, 2903895, 2902769, 4903864, 4903783, 2902388, 2902769, 1902457, 4903776, 1901897, 1902458, 2902775]
+2025-09-14 21:41:01,617 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 500 Internal Server Error"
+2025-09-14 21:41:01,619 - INFO - Retrying request to /openai/v1/chat/completions in 0.460873 seconds
+2025-09-14 21:41:11,837 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 21:41:11,837 - ERROR - LLM parsing error: list index out of range
+2025-09-14 21:41:11,837 - WARNING - Query failed: Failed to parse query: list index out of range
+2025-09-14 21:41:11,837 - INFO - 127.0.0.1 - - [14/Sep/2025 21:41:11] "[35m[1mPOST /ask HTTP/1.1[0m" 500 -
+2025-09-14 21:53:57,215 - INFO -  * Detected change in 'C:\\Users\\anush\\Downloads\\floatchat\\backend\\chatbot.py', reloading
+2025-09-14 21:53:57,222 - INFO -  * Detected change in 'C:\\Users\\anush\\Downloads\\floatchat\\backend\\chatbot.py', reloading
+2025-09-14 21:54:01,952 - INFO -  * Restarting with watchdog (windowsapi)
+2025-09-14 21:54:22,182 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-14 21:54:22,474 - INFO - Use pytorch device_name: cpu
+2025-09-14 21:54:22,474 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-14 21:54:28,841 - WARNING -  * Debugger is active!
+2025-09-14 21:54:28,857 - INFO -  * Debugger PIN: 129-881-227
+2025-09-14 21:54:56,677 - INFO - 127.0.0.1 - - [14/Sep/2025 21:54:56] "GET /stats HTTP/1.1" 200 -
+2025-09-14 21:54:58,795 - INFO - Processing query: Show profiles in All from 2025-01-01 to 2025-08-31 with Temperature, Salinity
+2025-09-14 21:54:59,475 - INFO - Chroma returned float_ids: [4903864, 2902203, 2903142, 2903142, 1902455, 4903775, 1902455, 7902200, 7902200, 2902272, 1901897, 4903864, 1902455, 4903794, 1902455, 6903059, 6903140, 6903140, 2902273, 2902203, 4903775, 2903142, 7902200, 1902669, 2903142, 1902457, 4903864, 2902306, 4903864, 1902458, 2902768, 1902457, 4903776, 6903140, 1902458, 6903140, 1902458, 4903775, 4903864, 7902190, 4903775, 4903775, 4903793, 1902458, 6903140, 2902203, 1901897, 1902458, 1902455, 2903142]
+2025-09-14 21:55:00,452 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 21:55:00,490 - INFO - Executing SQL: SELECT * FROM argo_profiles WHERE profile_date >= :start_date AND profile_date <= :end_date AND json_array_length(temperature_values::json) > 0 AND json_array_length(salinity_values::json) > 0; with params: {'ids': [4903864, 2902203, 2903142, 2903142, 1902455, 4903775, 1902455, 7902200, 7902200, 2902272, 1901897, 4903864, 1902455, 4903794, 1902455, 6903059, 6903140, 6903140, 2902273, 2902203, 4903775, 2903142, 7902200, 1902669, 2903142, 1902457, 4903864, 2902306, 4903864, 1902458, 2902768, 1902457, 4903776, 6903140, 1902458, 6903140, 1902458, 4903775, 4903864, 7902190, 4903775, 4903775, 4903793, 1902458, 6903140, 2902203, 1901897, 1902458, 1902455, 2903142], 'start_date': '2025-01-01', 'end_date': '2025-08-31'}
+2025-09-14 21:55:01,184 - INFO - Query returned 1413 profiles for: Show profiles in All from 2025-01-01 to 2025-08-31 with Temperature, Salinity
+2025-09-14 21:55:01,206 - INFO - 127.0.0.1 - - [14/Sep/2025 21:55:01] "POST /ask HTTP/1.1" 200 -
+2025-09-14 21:56:20,696 - INFO -  * Detected change in 'C:\\Users\\anush\\Downloads\\floatchat\\backend\\chatbot.py', reloading
+2025-09-14 21:56:20,698 - INFO -  * Detected change in 'C:\\Users\\anush\\Downloads\\floatchat\\backend\\chatbot.py', reloading
+2025-09-14 21:56:20,698 - INFO -  * Detected change in 'C:\\Users\\anush\\Downloads\\floatchat\\backend\\chatbot.py', reloading
+2025-09-14 21:56:23,304 - INFO -  * Restarting with watchdog (windowsapi)
+2025-09-14 21:56:46,888 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-14 21:56:47,093 - INFO - Use pytorch device_name: cpu
+2025-09-14 21:56:47,095 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-14 21:56:54,582 - WARNING -  * Debugger is active!
+2025-09-14 21:56:54,585 - INFO -  * Debugger PIN: 129-881-227
+2025-09-14 21:56:54,790 - INFO - Processing query: Show profiles in All from 2025-01-01 to 2025-08-31 with Temperature, Salinity
+2025-09-14 21:56:55,038 - INFO - Chroma returned float_ids: [4903864, 2902203, 2903142, 2903142, 1902455, 4903775, 1902455, 7902200, 7902200, 2902272, 1901897, 4903864, 1902455, 4903794, 1902455, 6903059, 6903140, 6903140, 2902273, 2902203, 4903775, 2903142, 7902200, 1902669, 2903142, 1902457, 4903864, 2902306, 4903864, 1902458, 2902768, 1902457, 4903776, 6903140, 1902458, 6903140, 1902458, 4903775, 4903864, 7902190, 4903775, 4903775, 4903793, 1902458, 6903140, 2902203, 1901897, 1902458, 1902455, 2903142]
+2025-09-14 21:56:55,246 - INFO - 127.0.0.1 - - [14/Sep/2025 21:56:55] "GET /stats HTTP/1.1" 200 -
+2025-09-14 21:56:55,786 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 21:56:55,804 - INFO - Executing SQL: SELECT float_id, profile_date, latitude, longitude, pressure_levels, temperature_values, salinity_values FROM argo_profiles WHERE profile_date BETWEEN :start_date AND :end_date AND json_array_length(temperature_values::json) > 0 AND json_array_length(salinity_values::json) > 0; with params: {'ids': [4903864, 2902203, 2903142, 2903142, 1902455, 4903775, 1902455, 7902200, 7902200, 2902272, 1901897, 4903864, 1902455, 4903794, 1902455, 6903059, 6903140, 6903140, 2902273, 2902203, 4903775, 2903142, 7902200, 1902669, 2903142, 1902457, 4903864, 2902306, 4903864, 1902458, 2902768, 1902457, 4903776, 6903140, 1902458, 6903140, 1902458, 4903775, 4903864, 7902190, 4903775, 4903775, 4903793, 1902458, 6903140, 2902203, 1901897, 1902458, 1902455, 2903142], 'start_date': '2025-01-01 00:00:00', 'end_date': '2025-08-31 23:59:59'}
+2025-09-14 21:56:56,785 - INFO - Query returned 1413 profiles for: Show profiles in All from 2025-01-01 to 2025-08-31 with Temperature, Salinity
+2025-09-14 21:56:56,816 - INFO - 127.0.0.1 - - [14/Sep/2025 21:56:56] "POST /ask HTTP/1.1" 200 -
+2025-09-14 21:57:21,673 - INFO - 127.0.0.1 - - [14/Sep/2025 21:57:21] "GET /stats HTTP/1.1" 200 -
+2025-09-14 21:57:23,742 - INFO - Processing query: Show profiles in All from 2025-01-01 to 2025-08-31 with Temperature, Salinity
+2025-09-14 21:57:24,173 - INFO - Chroma returned float_ids: [4903864, 2902203, 2903142, 2903142, 1902455, 4903775, 1902455, 7902200, 7902200, 2902272, 1901897, 4903864, 1902455, 4903794, 1902455, 6903059, 6903140, 6903140, 2902273, 2902203, 4903775, 2903142, 7902200, 1902669, 2903142, 1902457, 4903864, 2902306, 4903864, 1902458, 2902768, 1902457, 4903776, 6903140, 1902458, 6903140, 1902458, 4903775, 4903864, 7902190, 4903775, 4903775, 4903793, 1902458, 6903140, 2902203, 1901897, 1902458, 1902455, 2903142]
+2025-09-14 21:57:26,177 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 21:57:26,186 - INFO - Executing SQL: SELECT * FROM argo_profiles WHERE profile_date >= :start_date AND profile_date <= :end_date AND json_array_length(temperature_values::json) > 0 AND json_array_length(salinity_values::json) > 0; with params: {'ids': [4903864, 2902203, 2903142, 2903142, 1902455, 4903775, 1902455, 7902200, 7902200, 2902272, 1901897, 4903864, 1902455, 4903794, 1902455, 6903059, 6903140, 6903140, 2902273, 2902203, 4903775, 2903142, 7902200, 1902669, 2903142, 1902457, 4903864, 2902306, 4903864, 1902458, 2902768, 1902457, 4903776, 6903140, 1902458, 6903140, 1902458, 4903775, 4903864, 7902190, 4903775, 4903775, 4903793, 1902458, 6903140, 2902203, 1901897, 1902458, 1902455, 2903142], 'start_date': '2025-01-01 00:00:00', 'end_date': '2025-08-31 23:59:59'}
+2025-09-14 21:57:27,730 - INFO - Query returned 1413 profiles for: Show profiles in All from 2025-01-01 to 2025-08-31 with Temperature, Salinity
+2025-09-14 21:57:27,780 - INFO - 127.0.0.1 - - [14/Sep/2025 21:57:27] "POST /ask HTTP/1.1" 200 -
+2025-09-14 22:04:55,551 - INFO -  * Detected change in 'C:\\Users\\anush\\Downloads\\floatchat\\backend\\chatbot.py', reloading
+2025-09-14 22:04:55,560 - INFO -  * Detected change in 'C:\\Users\\anush\\Downloads\\floatchat\\backend\\chatbot.py', reloading
+2025-09-14 22:04:55,560 - INFO -  * Detected change in 'C:\\Users\\anush\\Downloads\\floatchat\\backend\\chatbot.py', reloading
+2025-09-14 22:05:02,278 - INFO -  * Restarting with watchdog (windowsapi)
+2025-09-14 22:05:44,198 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-14 22:05:44,956 - INFO - Use pytorch device_name: cpu
+2025-09-14 22:05:44,957 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-14 22:05:53,206 - WARNING -  * Debugger is active!
+2025-09-14 22:05:53,251 - INFO -  * Debugger PIN: 129-881-227
+2025-09-14 22:05:54,410 - INFO - Processing query: Show profiles in All from 2025-01-01 to 2025-08-31 with Temperature, Pressure
+2025-09-14 22:05:55,547 - INFO - 127.0.0.1 - - [14/Sep/2025 22:05:55] "GET /stats HTTP/1.1" 200 -
+2025-09-14 22:05:55,911 - INFO - Chroma returned float_ids: [2903142, 2903142, 1902458, 2903142, 1902669, 1902457, 5907083, 5907083, 2902770, 1901910, 4903777, 1902455, 2903895, 1902457, 1902681, 2903892, 2903142, 1902455, 2903893, 2902388, 1902455, 1902457, 2903466, 2902768, 1901910, 2902203, 4903776, 4903794, 2903142, 2902203, 2902273, 1902669, 1901897, 6903141, 2903895, 2902203, 2902273, 2902203, 1902457, 1902669, 2902306, 1902455, 1902669, 2902203, 1902670, 1902671, 2902203, 1902455, 2902770, 2902769]
+2025-09-14 22:05:57,172 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 22:05:57,308 - INFO - Executing SQL: SELECT float_id, profile_date, latitude, longitude, temperature_values, pressure_levels FROM argo_profiles WHERE profile_date >= :start_date AND profile_date <= :end_date AND json_array_length(temperature_values::json) > 0 AND json_array_length(pressure_levels::json) > 0; with params: {'ids': [2903142, 2903142, 1902458, 2903142, 1902669, 1902457, 5907083, 5907083, 2902770, 1901910, 4903777, 1902455, 2903895, 1902457, 1902681, 2903892, 2903142, 1902455, 2903893, 2902388, 1902455, 1902457, 2903466, 2902768, 1901910, 2902203, 4903776, 4903794, 2903142, 2902203, 2902273, 1902669, 1901897, 6903141, 2903895, 2902203, 2902273, 2902203, 1902457, 1902669, 2902306, 1902455, 1902669, 2902203, 1902670, 1902671, 2902203, 1902455, 2902770, 2902769], 'start_date': '2025-01-01', 'end_date': '2025-08-31'}
+2025-09-14 22:05:59,793 - INFO - Query returned 1443 profiles for: Show profiles in All from 2025-01-01 to 2025-08-31 with Temperature, Pressure
+2025-09-14 22:05:59,866 - INFO - 127.0.0.1 - - [14/Sep/2025 22:05:59] "POST /ask HTTP/1.1" 200 -
+2025-09-14 22:09:11,467 - INFO -  * Detected change in 'C:\\Users\\anush\\Downloads\\floatchat\\backend\\chatbot.py', reloading
+2025-09-14 22:09:11,483 - INFO -  * Detected change in 'C:\\Users\\anush\\Downloads\\floatchat\\backend\\chatbot.py', reloading
+2025-09-14 22:09:21,406 - INFO -  * Restarting with watchdog (windowsapi)

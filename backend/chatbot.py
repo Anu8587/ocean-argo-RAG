@@ -1,4 +1,12 @@
-from flask import Flask, request, jsonify
+# --- Debug endpoint for troubleshooting ---
+@app.route('/debug', methods=['POST'])
+def debug():
+    data = request.get_json()
+    user_query = data.get('query', 'test query')
+    results = query_profiles(user_query)
+    
+    # Return detailed debugging info
+    return jsonifyfrom flask import Flask, request, jsonify
 import chromadb
 from sentence_transformers import SentenceTransformer
 import pandas as pd
@@ -75,23 +83,22 @@ def parse_query_with_llm(user_query):
 
     User query: {user_query}
 
-    You are an AI assistant for FloatChat, a system for querying ARGO float data stored in the argo_profiles table. Your task is to interpret the user's natural language query and generate a JSON object containing a valid PostgreSQL query and corresponding filters to query the argo_profiles table. The table uses TEXT columns (temperature_values, pressure_levels, salinity_values) that store JSON arrays, requiring explicit casting to JSON with ::json for queries using json_array_elements. The profile_date column is TEXT (format: 'YYYY-MM-DDTHH:MM:SSZ'), not TIMESTAMP. Current date: 2025-09-11.
+    You are an AI assistant for FloatChat, a system for querying ARGO float data stored in the argo_profiles table. Your task is to interpret the user's natural language query and generate a JSON object containing a valid PostgreSQL query and corresponding filters to query the argo_profiles table. The table uses TEXT columns (temperature_values, pressure_levels) that store JSON arrays, requiring explicit casting to JSON with ::json for queries using json_array_elements. The profile_date column is TEXT (format: 'YYYY-MM-DDTHH:MM:SSZ'), not TIMESTAMP. Current date: 2025-09-11.
 
     Guidelines:
-    - Semantically analyze the query to identify conditions for columns: float_id (integer), profile_date (text, e.g., '2025-01-09T19:43:57Z'), latitude (float), longitude (float), temperature_values (text, JSON array), pressure_levels (text, JSON array), salinity_values (text, JSON array).
-    - For locations, interpret named regions (e.g., 'Indian Ocean': latitude -30 to 30, longitude 20 to 120; 'Pacific Ocean': latitude -60 to 60, longitude 120 to 270) or coordinates (e.g., near 0°N, 0°E → latitude BETWEEN -5 AND 5, longitude BETWEEN -5 AND 5).
+    - Semantically analyze the query to identify conditions for columns: float_id (integer), profile_date (text, e.g., '2025-01-09T19:43:57Z'), latitude (float), longitude (float), temperature_values (text, JSON array), pressure_levels (text, JSON array).
+    - For locations, interpret named regions (e.g., 'Indian Ocean': latitude -30 to 30, longitude 20 to 120; 'Arabian Sea': latitude 0 to 25, longitude 50 to 77).
     - For time periods, interpret absolute dates (e.g., '2025': profile_date LIKE :year || '%'; 'January 2025': profile_date LIKE :month || '%') or relative periods (e.g., 'last 6 months': profile_date::timestamp >= CURRENT_DATE - INTERVAL '6 months').
-    - For parameters (temperature, salinity, pressure), use json_array_elements(column::json) with conditions (e.g., for 'temperature above 25C': EXISTS (SELECT 1 FROM json_array_elements(temperature_values::json) t WHERE (t->>'value')::float > :temp); for 'pressure above 100 dbar': EXISTS (SELECT 1 FROM json_array_elements(pressure_levels::json) p WHERE (p->>'value')::float > :pressure)).
-    - Use reasonable thresholds (e.g., salinity > 34 PSU, temperature > 15C, pressure > 100 dbar) to maximize results.
-    - For non-empty arrays, use json_array_length(column::json) > 0 (e.g., for salinity: json_array_length(salinity_values::json) > 0). Never use != '[]'::json.
-    - For comparison queries (e.g., 'compare salinity and temperature'), select both temperature_values and salinity_values with json_array_length(column::json) > 0.
+    - For parameters (temperature, pressure), use json_array_elements(column::json) with conditions (e.g., for 'temperature above 15C': EXISTS (SELECT 1 FROM json_array_elements(temperature_values::json) t WHERE (t->>'value')::float > :temp); for 'pressure above 100 dbar': EXISTS (SELECT 1 FROM json_array_elements(pressure_levels::json) p WHERE (p->>'value')::float > :pressure)).
+    - Use reasonable thresholds (e.g., temperature > 15C, pressure > 100 dbar) to maximize results.
+    - For non-empty arrays, use json_array_length(column::json) > 0.
     - For gradient queries (e.g., 'temperature gradient across depths'), select temperature_values and pressure_levels, order by (p->>'value')::float ASC.
-    - For unsupported parameters (e.g., 'oxygen levels'), return an empty SQL query with an error message.
+    - For unsupported parameters (e.g., 'salinity'), return an empty SQL query with an error message: 'Salinity not supported in MVP.'
     - Ensure SQL is valid PostgreSQL, uses parameterized queries (e.g., :lat_min, :temp) for safety, and avoids SQL injection.
     - Avoid DATE_PART or DATE_TRUNC unless profile_date is cast to timestamp.
     - If ambiguous, generate a broad SQL query (e.g., select all fields with float_id = ANY(:ids)).
-    - If no profiles are expected (e.g., due to sparse data), include a warning: 'No profiles found, possibly due to sparse data or restrictive filters.'
-    - Return valid JSON, ensuring all special characters (e.g., quotes, backslashes) are properly escaped.
+    - If no profiles are expected, include a warning: 'No profiles found, possibly due to sparse data or restrictive filters.'
+    - Return valid JSON, ensuring all special characters are properly escaped.
 
     Output format:
     ```json
@@ -102,6 +109,7 @@ def parse_query_with_llm(user_query):
         "warning": null
     }}
     ```
+
     If the query cannot be processed:
     ```json
     {{
@@ -112,8 +120,9 @@ def parse_query_with_llm(user_query):
     }}
     ```
 
-    Return only the JSON object, wrapped in ```json\\n...\\n```.
+    Return only the JSON object, wrapped in ```json\n...\n```.
     """
+    
     try:
         response = groq_client.chat.completions.create(
             model="llama-3.3-70b-versatile",
@@ -145,52 +154,60 @@ def query_profiles(user_query):
         profile_ids = [int(m['float_id']) for m in results['metadatas'][0]]
         logger.info(f"Chroma returned float_ids: {profile_ids}")
         print(f"Chroma returned {len(profile_ids)} profile IDs")
-
+        
         # Get LLM-generated query parameters
         query_info = parse_query_with_llm(user_query)
         if query_info.get("error"):
             logger.warning(f"Query failed: {query_info['error']}")
             print(f"Query error: {query_info['error']}")
             return {'error': query_info['error']}
-
+        
         sql = query_info.get('sql')
         params = {'ids': profile_ids}
         params.update(query_info.get('filters', {}))
-
+        
         # Fallback SQL if LLM fails or returns empty/invalid SQL
         if not sql or not query_info.get('filters'):
             logger.info("Using fallback SQL query")
             print("Using fallback SQL query")
             sql = """
-            SELECT float_id, profile_date, latitude, longitude, 
-                   temperature_values, pressure_levels, salinity_values
+            SELECT float_id, profile_date, latitude, longitude,
+                   temperature_values, pressure_levels
             FROM argo_profiles
             WHERE float_id = ANY(:ids)
-            AND json_array_length(temperature_values::json) > 0
+              AND json_array_length(temperature_values::json) > 0
             """
-            if "salinity" in user_query.lower():
-                sql += " AND json_array_length(salinity_values::json) > 0"
-                params['warning'] = "Salinity data is sparse (~50% of profiles lack salinity measurements)."
+            
             if "pressure" in user_query.lower():
-                sql += " AND EXISTS (SELECT 1 FROM json_array_elements(pressure_levels::json) p WHERE (p->>'value')::float > :pressure)"
-                params['pressure'] = 100
-
+                sql += " AND json_array_length(pressure_levels::json) > 0"
+            
+            if "salinity" in user_query.lower():
+                return {'error': 'Salinity not supported in MVP.'}
+            
             if "last" in user_query.lower() and ("month" in user_query.lower() or "year" in user_query.lower()):
                 sql += " AND profile_date::timestamp >= CURRENT_DATE - INTERVAL :interval"
-                params['interval'] = '6 months' if "month" in user_query.lower() else '1 year'    
+                params['interval'] = '6 months' if "month" in user_query.lower() else '1 year'
+            
             if "temperature" in user_query.lower() and "gradient" not in user_query.lower():
                 sql += " AND EXISTS (SELECT 1 FROM json_array_elements(temperature_values::json) t WHERE (t->>'value')::float > :temp)"
                 params['temp'] = 15
-
-                
-
+        
         print(f"Executing SQL: {sql} with params: {params}")
         logger.info(f"Executing SQL: {sql} with params: {params}")
-
+        
         # Execute SQL safely
         with engine.connect() as conn:
             profiles = pd.read_sql(text(sql), conn, params=params)
-
+        
+        # Ensure required columns exist
+        required_columns = ['float_id', 'profile_date', 'latitude', 'longitude', 'temperature_values', 'pressure_levels']
+        for col in required_columns:
+            if col not in profiles.columns:
+                if col in ['temperature_values', 'pressure_levels']:
+                    profiles[col] = '[]'  # Default empty JSON array
+                else:
+                    profiles[col] = None  # Default None for other columns
+        
         # Format results
         formatted = []
         for _, row in profiles.iterrows():
@@ -200,29 +217,24 @@ def query_profiles(user_query):
                 'latitude': float(row['latitude']),
                 'longitude': float(row['longitude']),
                 'temperature_count': len(json.loads(row['temperature_values'])),
-                'pressure_count': len(json.loads(row['pressure_levels'])),
-                'salinity_count': len(json.loads(row['salinity_values']))
+                'pressure_count': len(json.loads(row['pressure_levels']))
             })
-
+        
         # Handle zero results
         if not formatted:
             warning = query_info.get('warning', 'No profiles found, possibly due to sparse data or restrictive filters.')
             formatted.append({'warning': warning})
             logger.warning(warning)
             print(warning)
-
-        # Add warning from params if present
-        if 'warning' in params:
-            formatted.append({'warning': params['warning']})
-
+        
         logger.info(f"Query returned {len([r for r in formatted if 'warning' not in r])} profiles for: {user_query}")
         print(f"Query returned {len([r for r in formatted if 'warning' not in r])} profiles")
         return formatted
+        
     except Exception as e:
         logger.error(f"Query error: {e}")
         print(f"Query error: {e}")
         return {'error': str(e)}
-
 
 # --- Stats endpoint for Page 1 ---
 @app.route('/stats', methods=['GET'])
@@ -231,24 +243,26 @@ def stats():
         sql = """
         SELECT float_id, profile_date, latitude, longitude,
                json_array_length(temperature_values::json) as temperature_count,
-               json_array_length(salinity_values::json) as salinity_count
+               json_array_length(pressure_levels::json) as pressure_count
         FROM argo_profiles
         WHERE latitude BETWEEN -30 AND 30 AND longitude BETWEEN 20 AND 120
-        AND profile_date::timestamp >= CURRENT_DATE - INTERVAL '6 months'
+          AND profile_date::timestamp >= CURRENT_DATE - INTERVAL '6 months'
         """
+        
         with engine.connect() as conn:
             profiles = pd.read_sql(text(sql), conn).to_dict(orient="records")
+        
         return jsonify({
             "results": profiles,
             "count": len(profiles),
             "latest_date": max(p["profile_date"] for p in profiles) if profiles else "N/A",
-            "salinity_count": sum(1 for p in profiles if p["salinity_count"] > 0)
+            "pressure_count": sum(1 for p in profiles if p["pressure_count"] > 0)
         })
+        
     except Exception as e:
         logger.error(f"Stats error: {e}")
         print(f"Stats error: {e}")
         return jsonify({"error": str(e)}), 400
-
 
 # --- Flask endpoint ---
 @app.route('/ask', methods=['POST'])
@@ -258,13 +272,13 @@ def ask():
         logger.error("Missing or invalid query in request")
         print("Error: Missing or invalid query")
         return jsonify({'error': 'Missing query'}), 400
-
+    
     user_query = data['query']
     results = query_profiles(user_query)
-
+    
     if isinstance(results, dict) and 'error' in results:
         return jsonify({'error': results['error']}), 500
-
+    
     return jsonify({
         'query': user_query,
         'results': results,
