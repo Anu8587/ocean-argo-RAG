@@ -9,7 +9,7 @@ Floatchat is a full-stack application that combines PostgreSQL, ChromaDB, and La
 ## 🎥 Demo
 
 <!-- Add your demo video here -->
-[![FLOATCHAT Demo]((https://www.loom.com/share/ecf1be546d1c41798a06fb4347b77786?sid=a8398a6f-eb1d-4db6-98a4-3726262f8906))
+[![FLOATCHAT Demo](https://www.loom.com/share/ecf1be546d1c41798a06fb4347b77786?sid=a8398a6f-eb1d-4db6-98a4-3726262f8906)
 
 ---
 
